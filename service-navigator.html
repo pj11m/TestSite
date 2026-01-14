@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Resident Access</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/cityoftyler.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/img/cityoftyler.png" rel="city-seal">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+      /* Calendar iframe */
+    iframe {
+      width: 100%;
+      height: 1200px;;
+      }
+  </style>
+  	<script type="text/javascript">window.socrataChatDomain = 'https://eerp-demos-1.chatbot.socrata.com';</script>
+	<link rel="stylesheet" href="https://eerp-demos-1.chatbot.socrata.com/embed/embed.css"></link>
+	<script defer="defer" src="https://eerp-demos-1.chatbot.socrata.com/embed/embed.js"></script>	
+</head>
+
+<body class="service-details-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="./" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="assets/img/cityoftyler.png" alt="">
+        <h1 class="sitename">City of Tyler</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+       <ul>
+          <li><a href="./" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+            <!-- <li class="dropdown"><a href="services.html"><span>Self Service</span><i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="/css/citizens/default.aspx" target="_blank">Citizens</a></li>
+              <li><a href="/ess/login.aspx" target="_blank" >Employees</a></li>
+              <li><a href="/vss/vendors/" target="_blank" >Vendors</a></li>
+            </ul>
+          </li> -->
+          <li class="dropdown"><a href="#"><span>Services</span><i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a data-portico-path="/navigator/public/selections/navigator">Make a Payment</a></li>
+              <li><a data-portico-path="/TIM/portal/portal-main" title="" target="_blank">Report a Problem</a></li>
+              <li><a data-energov-path="/prod/EnerGov/SelfService#/home" title="" target="_blank">Register a New Business</a></li>
+              <li class="dropdown"><a href="#"><span>Online Forms</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a data-cm-path="/ecmcitizenaccess/publicForms/FTD1455S1" target="_blank">Claim Against the City</a></li>
+                  <li><a data-cm-path="/ecmcitizenaccess/publicForms/FTD1210S5" target="_blank">Street Vendor Form</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Open Data</span><i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="https://tylertech-erp.finance.socrata.com/#!/dashboard" target="_blank">Open Finance</a></li>
+              <li><a href="https://capitalprojects.austintexas.gov/projects?tab=home" target="_blank">Capital Projects - Austin</a></li>
+              <li><a href="https://capitalprojects.seattle.gov/projects?tab=home" target="_blank">Capital Projects - Seattle</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Self Service</span><i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a data-energov-path="/prod/energov/selfservice#/home" target="_blank">Civic Access</a></li>
+              <li><a data-portico-path="/vss/vendor-selfservice/home" target="_blank">Vendor Access</a></li>
+              <li><a data-portico-path="/navigator/public/selections/navigator">Resident Access</a></li>
+
+              <li><a data-portico-path="/tesp/employee-selfservice/home">Employee Access</a></li>
+			  <li><a data-portico-path="/tess/citizen/jobs">Applicant Access</a></li>
+			  <li><a data-portico-path="/tess/citizen/dashboard">Former Employee Access</a></li>
+              <li class="dropdown"><a href="#"><span>EERP Self Service</span><i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="/vss/vendors/" target="_blank" >Vendor Self Service</a></li>
+                  <li><a href="/css/citizens/default.aspx" target="_blank">Citizen Self Service</a></li>
+                  <li><a href="/ess/login.aspx" target="_blank" >Employee Self Service</a></li>
+                </ul>
+              </li> 
+            </ul>
+          </li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title dark-background">
+      <div class="container position-relative">
+        <h3>Resident Access</h3>
+        <p>Please choose one of the several online services the city offers from it's website</p>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="./">Home</a></li>
+            <li class="current">Resident Access</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Service Details Section -->
+    <section id="service-details" class="service-details section" style="padding: 0px;">
+        <iframe data-portico-path="/navigator/public/selections/navigator" style="width: 100%; height: 1800px; border: none; overflow: hidden; display: block; margin: 0 auto;"  scrolling="no"></iframe>
+    </section><!-- /Service Details Section -->
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

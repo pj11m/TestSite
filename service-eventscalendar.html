@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Event Calendar</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/cityoftyler.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .calendar-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .event-item {
+      border-left: 4px solid var(--accent-color);
+      padding: 10px 15px;
+      margin-bottom: 15px;
+      background-color: var(--surface-color);
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .event-date {
+      font-weight: bold;
+      color: var(--accent-color);
+    }
+    .event-title {
+      font-size: 1.1rem;
+      margin: 5px 0;
+    }
+    .event-description {
+      font-size: 0.9rem;
+      color: var(--default-color);
+    }
+    .loading {
+      text-align: center;
+      padding: 20px;
+    }
+    .calendar-tabs {
+      margin-bottom: 20px;
+    }
+    .calendar-tabs .nav-link {
+      color: var(--default-color);
+    }
+    .calendar-tabs .nav-link.active {
+      color: var(--accent-color);
+      font-weight: bold;
+    }
+    
+    /* Calendar Control Styles */
+    .month-calendar {
+      margin-bottom: 30px;
+      background-color: var(--surface-color);
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .month-header {
+      background-color: var(--accent-color);
+      color: white;
+      padding: 15px;
+      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .month-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 0;
+    }
+    .month-nav {
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      padding: 0 10px;
+    }
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1px;
+      background-color: #f0f0f0;
+    }
+    .calendar-day-header {
+      background-color: #f8f8f8;
+      text-align: center;
+      padding: 10px 0;
+      font-weight: bold;
+    }
+    .calendar-day {
+      background-color: white;
+      min-height: 60px;
+      padding: 5px;
+      text-align: right;
+      position: relative;
+    }
+    .calendar-day.other-month {
+      background-color: #f9f9f9;
+      color: #aaa;
+    }
+    .calendar-day.today {
+      background-color: #f0f7ff;
+      font-weight: bold;
+    }
+    .calendar-day.has-events {
+      position: relative;
+    }
+    .calendar-day.has-events::after {
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--accent-color);
+    }
+    .day-number {
+      font-size: 0.9rem;
+    }
+  </style>
+  	<script type="text/javascript">window.socrataChatDomain = 'https://eerp-demos-1.chatbot.socrata.com';</script>
+	<link rel="stylesheet" href="https://eerp-demos-1.chatbot.socrata.com/embed/embed.css"></link>
+	<script defer="defer" src="https://eerp-demos-1.chatbot.socrata.com/embed/embed.js"></script>	
+</head>
+
+<body class="service-details-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="./" class="logo d-flex align-items-center">
+        <img src="assets/img/cityoftyler.png" alt="">
+        <h1 class="sitename">City of Tyler</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+      <ul>
+          <li><a href="./" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li class="dropdown"><a href="#"><span>Services</span><i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a data-portico-path="/navigator/public/selections/navigator">Make a Payment</a></li>
+              <li><a data-portico-path="/TIM/portal/portal-main" title="" target="_blank">Report a Problem</a></li>
+              <li><a data-energov-path="/prod/EnerGov/SelfService#/home" title="" target="_blank">Register a New Business</a></li>
+              <li class="dropdown"><a href="#"><span>Online Forms</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a data-cm-path="/ecmcitizenaccess/publicForms/FTD1455S1" target="_blank">Claim Against the City</a></li>
+                  <li><a data-cm-path="/ecmcitizenaccess/publicForms/FTD1210S5" target="_blank">Street Vendor Form</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Open Data</span><i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="https://tylertech-erp.finance.socrata.com/#!/dashboard" target="_blank">Open Finance</a></li>
+              <li><a href="https://capitalprojects.austintexas.gov/projects?tab=home" target="_blank">Capital Projects - Austin</a></li>
+              <li><a href="https://capitalprojects.seattle.gov/projects?tab=home" target="_blank">Capital Projects - Seattle</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Self Service</span><i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a data-energov-path="/prod/energov/selfservice#/home" target="_blank">Civic Access</a></li>
+              <li><a data-portico-path="/vss/vendor-selfservice/home" target="_blank">Vendor Access</a></li>
+              <li><a data-portico-path="/navigator/public/selections/navigator">Resident Access</a></li>
+
+              <li><a data-portico-path="/tesp/employee-selfservice/home">Employee Access</a></li>
+			  <li><a data-portico-path="/tess/citizen/jobs">Applicant Access</a></li>
+			  <li><a data-portico-path="/tess/citizen/dashboard">Former Employee Access</a></li>
+              <li class="dropdown"><a href="#"><span>EERP Self Service</span><i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="/vss/vendors/" target="_blank" >Vendor Self Service</a></li>
+                  <li><a href="/css/citizens/default.aspx" target="_blank">Citizen Self Service</a></li>
+                  <li><a href="/ess/login.aspx" target="_blank" >Employee Self Service</a></li>
+                </ul>
+              </li> 
+            </ul>
+          </li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title dark-background">
+      <div class="container position-relative">
+        <h3>City Events Calendar</h3>
+        <p>Stay up to date with all city events, meetings, and important dates.</p>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="./">Home</a></li>
+            <li class="current">Event Calendar</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Calendar Section -->
+    <section id="calendar" class="section">
+      <div class="container calendar-container">
+        
+        <!-- Month Calendar Control -->
+        <div class="month-calendar">
+          <div class="month-header">
+            <button class="month-nav" id="prevMonth">&lt;</button>
+            <h2 class="month-title" id="currentMonth">June 2025</h2>
+            <button class="month-nav" id="nextMonth">&gt;</button>
+          </div>
+          <div class="calendar-grid">
+            <div class="calendar-day-header">Sun</div>
+            <div class="calendar-day-header">Mon</div>
+            <div class="calendar-day-header">Tue</div>
+            <div class="calendar-day-header">Wed</div>
+            <div class="calendar-day-header">Thu</div>
+            <div class="calendar-day-header">Fri</div>
+            <div class="calendar-day-header">Sat</div>
+            <!-- Calendar days will be inserted here by JavaScript -->
+          </div>
+          <div id="calendar-days" class="calendar-grid"></div>
+        </div>
+        
+        <!-- Calendar Tabs -->
+        <ul class="nav nav-tabs calendar-tabs" id="calendarTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="all-events-tab" data-bs-toggle="tab" data-bs-target="#all-events" type="button" role="tab" aria-controls="all-events" aria-selected="true">All Events</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="city-meetings-tab" data-bs-toggle="tab" data-bs-target="#city-meetings" type="button" role="tab" aria-controls="city-meetings" aria-selected="false">City Meetings</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="community-events-tab" data-bs-toggle="tab" data-bs-target="#community-events" type="button" role="tab" aria-controls="community-events" aria-selected="false">Community Events</button>
+          </li>
+        </ul>
+        
+        <!-- Tab Content -->
+        <div class="tab-content" id="calendarTabContent">
+          <div class="tab-pane fade show active" id="all-events" role="tabpanel" aria-labelledby="all-events-tab">
+            <div id="all-events-list" class="events-list">
+              <div class="loading">Loading events...</div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="city-meetings" role="tabpanel" aria-labelledby="city-meetings-tab">
+            <div id="city-meetings-list" class="events-list">
+              <div class="loading">Loading city meetings...</div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="community-events" role="tabpanel" aria-labelledby="community-events-tab">
+            <div id="community-events-list" class="events-list">
+              <div class="loading">Loading community events...</div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section><!-- End Calendar Section -->
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <!-- Footer content -->
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  
+  <!-- RSS Calendar Feed JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Calendar control functionality
+      const calendarDays = document.getElementById('calendar-days');
+      const currentMonthElement = document.getElementById('currentMonth');
+      const prevMonthButton = document.getElementById('prevMonth');
+      const nextMonthButton = document.getElementById('nextMonth');
+      
+      let currentDate = new Date();
+      let currentMonth = currentDate.getMonth();
+      let currentYear = currentDate.getFullYear();
+      
+      // Sample events data - replace with your actual events
+      const events = [
+        { date: new Date(2024, 5, 10), title: 'City Council Meeting' },
+        { date: new Date(2024, 5, 15), title: 'Downtown Farmers Market' },
+        { date: new Date(2024, 5, 20), title: 'Planning Commission' }
+      ];
+      
+      // Generate the calendar
+      function generateCalendar(month, year) {
+        // Clear previous calendar days
+        while (calendarDays.firstChild) {
+          calendarDays.removeChild(calendarDays.firstChild);
+        }
+        
+        // Update month/year display
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 
+                           'July', 'August', 'September', 'October', 'November', 'December'];
+        currentMonthElement.textContent = `${monthNames[month]} ${year}`;
+        
+        // Get first day of month and total days
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        
+        // Get days from previous month
+        const daysInPrevMonth = new Date(year, month, 0).getDate();
+        
+        // Create grid cells for days
+        let dayCount = 1;
+        let nextMonthDay = 1;
+        
+        // Create 6 rows (max possible for a month)
+        for (let i = 0; i < 6; i++) {
+          for (let j = 0; j < 7; j++) {
+            const dayCell = document.createElement('div');
+            dayCell.className = 'calendar-day';
+            
+            if (i === 0 && j < firstDay) {
+              // Previous month days
+              const prevMonthDate = daysInPrevMonth - (firstDay - j - 1);
+              dayCell.innerHTML = `<span class="day-number">${prevMonthDate}</span>`;
+              dayCell.classList.add('other-month');
+            } else if (dayCount > daysInMonth) {
+              // Next month days
+              dayCell.innerHTML = `<span class="day-number">${nextMonthDay}</span>`;
+              dayCell.classList.add('other-month');
+              nextMonthDay++;
+            } else {
+              // Current month days
+              dayCell.innerHTML = `<span class="day-number">${dayCount}</span>`;
+              
+              // Check if this day has events
+              const hasEvents = events.some(event => 
+                event.date.getDate() === dayCount && 
+                event.date.getMonth() === month && 
+                event.date.getFullYear() === year
+              );
+              
+              if (hasEvents) {
+                dayCell.classList.add('has-events');
+              }
+              
+              // Highlight today
+              if (dayCount === currentDate.getDate() && 
+                  month === currentDate.getMonth() && 
+                  year === currentDate.getFullYear()) {
+                dayCell.classList.add('today');
+              }
+              
+              dayCount++;
+            }
+            
+            calendarDays.appendChild(dayCell);
+          }
+        }
+      }
+      
+      // Initialize calendar
+      generateCalendar(currentMonth, currentYear);
+      
+      // Previous month button
+      prevMonthButton.addEventListener('click', function() {
+        currentMonth--;
+        if (currentMonth < 0) {
+          currentMonth = 11;
+          currentYear--;
+        }
+        generateCalendar(currentMonth, currentYear);
+      });
+      
+      // Next month button
+      nextMonthButton.addEventListener('click', function() {
+        currentMonth++;
+        if (currentMonth > 11) {
+          currentMonth = 0;
+          currentYear++;
+        }
+        generateCalendar(currentMonth, currentYear);
+      });
+      
+      // RSS feed URLs - replace with your actual RSS calendar feeds
+      const allEventsRSS = '/prod/tylermm/calendar//meetingInformation/getRssFeed';
+      const cityMeetingsRSS = '/prod/tylermm/calendar//meetingInformation/getRssFeed';
+      const communityEventsRSS = '/prod/tylermm/calendar//meetingInformation/getRssFeed';
+      
+      // Function to fetch and parse RSS feeds
+      async function fetchRSSFeed(url, containerId) {
+        const proxies = [
+          '', // Direct fetch first
+          'https://api.allorigins.win/raw?url=',
+          'https://corsproxy.io/?',
+          'https://api.codetabs.com/v1/proxy?quest='
+        ];
+        
+        for (let i = 0; i < proxies.length; i++) {
+          try {
+            const proxyUrl = proxies[i] ? proxies[i] + encodeURIComponent(url) : url;
+            console.log(`Attempt ${i + 1}: ${proxyUrl}`);
+            
+            const response = await fetch(proxyUrl);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            
+            const text = await response.text();
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(text, 'text/xml');
+            const items = xmlDoc.querySelectorAll('item');
+            
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            
+            if (items.length === 0) {
+              container.innerHTML = '<p>No events found.</p>';
+              return;
+            }
+            
+            items.forEach(item => {
+              const title = item.querySelector('title')?.textContent || 'No Title';
+              const description = item.querySelector('description')?.textContent || 'No description';
+              const pubDate = item.querySelector('pubDate')?.textContent || '';
+              const link = item.querySelector('link')?.textContent || '#';
+              
+              const eventDate = pubDate ? new Date(pubDate) : new Date();
+              const formattedDate = eventDate.toLocaleDateString('en-US', {
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+                hour: '2-digit', minute: '2-digit'
+              });
+              
+              const eventElement = document.createElement('div');
+              eventElement.className = 'event-item';
+              eventElement.innerHTML = `
+                <div class="event-date">${formattedDate}</div>
+                <h3 class="event-title"><a href="${link}" target="_blank">${title}</a></h3>
+                <div class="event-description">${description}</div>
+              `;
+              container.appendChild(eventElement);
+            });
+            return; // Success
+            
+          } catch (error) {
+            console.log(`Proxy ${i + 1} failed:`, error.message);
+            if (i === proxies.length - 1) {
+              document.getElementById(containerId).innerHTML = 
+                `<p>All ${proxies.length} attempts failed.<br><a href="${url}" target="_blank">Test RSS directly</a></p>`;
+            }
+          }
+        }
+      }
+      
+      // Load demo events if RSS feeds are not available
+      function loadDemoEvents() {
+        const containers = ['all-events-list', 'city-meetings-list', 'community-events-list'];
+        
+        containers.forEach(containerId => {
+          const container = document.getElementById(containerId);
+          container.innerHTML = '';
+          
+          // Demo events
+          const demoEvents = [
+            {
+              title: 'City Council Meeting',
+              date: 'Monday, June 10, 2025, 6:00 PM',
+              description: 'Regular city council meeting to discuss budget proposals and community development projects.'
+            },
+            {
+              title: 'Downtown Farmers Market',
+              date: 'Saturday, June 15, 2025, 8:00 AM',
+              description: 'Weekly farmers market featuring local produce, crafts, and food vendors.'
+            },
+            {
+              title: 'Planning Commission',
+              date: 'Thursday, June 20, 2025, 5:30 PM',
+              description: 'Monthly planning commission meeting to review zoning requests and development plans.'
+            }
+          ];
+          
+          // Add different events for different tabs
+          if (containerId === 'city-meetings-list') {
+            demoEvents.splice(1, 1); // Remove farmers market
+          } else if (containerId === 'community-events-list') {
+            demoEvents.splice(0, 1); // Remove city council
+            demoEvents.splice(1, 1); // Remove planning commission
+          }
+          
+          demoEvents.forEach(event => {
+            const eventElement = document.createElement('div');
+            eventElement.className = 'event-item';
+            eventElement.innerHTML = `
+              <div class="event-date">${event.date}</div>
+              <h3 class="event-title">${event.title}</h3>
+              <div class="event-description">${event.description}</div>
+            `;
+            
+            container.appendChild(eventElement);
+          });
+        });
+      }
+      
+      // Try to fetch RSS feeds or load demo events
+      console.log('Initializing RSS feeds...');
+      
+      // Test if RSS URLs are accessible
+      Promise.all([
+        fetchRSSFeed(allEventsRSS, 'all-events-list'),
+        fetchRSSFeed(cityMeetingsRSS, 'city-meetings-list'), 
+        fetchRSSFeed(communityEventsRSS, 'community-events-list')
+      ]).catch(error => {
+        console.error('Error with RSS feeds, loading demo events:', error);
+        loadDemoEvents();
+      });
+    });
+  </script>
+
+</body>
+
+</html>

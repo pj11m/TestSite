@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>City of Tyler</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/cityoftyler.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/img/cityoftyler.png" rel="city-seal">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  
+  	<script type="text/javascript">window.socrataChatDomain = 'https://eerp-demos-1.chatbot.socrata.com';</script>
+	<link rel="stylesheet" href="https://eerp-demos-1.chatbot.socrata.com/embed/embed.css"></link>
+	<script defer="defer" src="https://eerp-demos-1.chatbot.socrata.com/embed/embed.js"></script>	
+</head>
+<body  class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="./" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="assets/img/cityoftyler.png" alt="City of Tyler">
+        <h1 class="sitename">City of Tyler</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="./" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+            <!-- <li class="dropdown"><a href="services.html"><span>Self Service</span><i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="/css/citizens/default.aspx" target="_blank">Citizens</a></li>
+              <li><a href="/ess/login.aspx" target="_blank" >Employees</a></li>
+              <li><a href="/vss/vendors/" target="_blank" >Vendors</a></li>
+            </ul>
+          </li> -->
+          <li class="dropdown"><a href="#"><span>Services</span><i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a data-portico-path="/navigator/public/selections/navigator">Make a Payment</a></li>
+              <li><a data-portico-path="/TIM/portal/portal-main" title="" target="_blank">Report a Problem</a></li>
+              <li><a data-energov-path="/prod/EnerGov/SelfService#/home" title="" target="_blank">Register a New Business</a></li>
+              <li class="dropdown"><a href="#"><span>Online Forms</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a data-cm-path="/ecmcitizenaccess/publicForms/FTD1455S1" target="_blank">Claim Against the City</a></li>
+                  <li><a data-cm-path="/ecmcitizenaccess/publicForms/FTD1210S5" target="_blank">Street Vendor Form</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Open Data</span><i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="https://tylertech-erp.finance.socrata.com/#!/dashboard" target="_blank">Open Finance</a></li>
+              <li><a href="https://capitalprojects.austintexas.gov/projects?tab=home" target="_blank">Capital Projects - Austin</a></li>
+              <li><a href="https://capitalprojects.seattle.gov/projects?tab=home" target="_blank">Capital Projects - Seattle</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Self Service</span><i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a data-energov-path="/prod/energov/selfservice#/home" target="_blank">Civic Access</a></li>
+              <li><a data-portico-path="/vss/vendor-selfservice/home" target="_blank">Vendor Access</a></li>
+              <li><a data-portico-path="/navigator/public/selections/navigator">Resident Access</a></li>
+
+              <li><a data-portico-path="/tesp/employee-selfservice/home">Employee Access</a></li>
+			  <li><a data-portico-path="/tess/citizen/jobs">Applicant Access</a></li>
+			  <li><a data-portico-path="/tess/citizen/dashboard">Former Employee Access</a></li>
+              <li class="dropdown"><a href="#"><span>EERP Self Service</span><i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="/vss/vendors/" target="_blank" >Vendor Self Service</a></li>
+                  <li><a href="/css/citizens/default.aspx" target="_blank">Citizen Self Service</a></li>
+                  <li><a href="/ess/login.aspx" target="_blank" >Employee Self Service</a></li>
+                </ul>
+              </li> 
+            </ul>
+          </li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+
+      <!-- <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in"> -->
+
+      <div id="hero-carousel" class="carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+        <div class="container position-relative">
+
+          <div class="carousel-item active">
+            <div class="carousel-container">
+              <h3>Welcome to the City</h3>
+              <p>This is a public demo site to simulate a real municipal website to showcase Tyler Technologies web based services for civic engagement.</p>
+              <a href="about.html" class="btn-get-started">Read More</a>
+            </div>
+          </div><!-- End Carousel Item -->
+
+         <div class="carousel-item">
+            <div class="carousel-container">
+              <h3>Make a Payment</h3>
+              <p>Use Tyler Payments centralized payment engine to process Tyler solution and 3rd party payments.
+                Tyler Payments is designed to connect with existing customer Self Service portals to provide secure payment processing.</p>
+              <a data-portico-path="/navigator/public/selections/navigator" target="new" class="btn-get-started">Pay Now!</a>
+            </div>
+          </div><!-- End Carousel Item -->
+
+          <div class="carousel-item">
+            <div class="carousel-container">
+              <h3>MyCivic Mobile</h3>
+              <p>Download the cities mobile app to keep engaged and communicate with the city of current events.
+                 Tyler's MyCivic is a comprehensive, customizable mobile app platform built to connect government 
+                 departments with residents, visitors, and business owners.</p>
+              <a href="#features" class="btn-get-started">Read More</a>
+            </div>
+          </div><!-- End Carousel Item -->
+
+          <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+          </a>
+
+          <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+          </a>
+
+          <ol class="carousel-indicators"></ol>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- Featured Services Section -->
+    <section id="featured-services" class="featured-services section">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item item-red position-relative">
+              <div class="icon">
+                <i class="bi bi-activity"></i>
+              </div>
+              <a href="service-boards.html" class="stretched-link">
+                <h3>Resident Services</h3>
+              </a>
+              <p>The City offers a wide array of resident services, including assistance with non-emergency issues, 
+                municipal services, and support programs.</p>
+              <a href="service-navigator.html" class="stretched-link"></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item item-teal position-relative">
+              <div class="icon">
+                <i class="bi bi-bounding-box-circles"></i>
+              </div>
+              <a href="service-documents.html" class="stretched-link">
+                <h3>Public Documents</h3>
+              </a>
+              <p>Under state law, every person has a right to access public government records. 
+                 Use our document search for access. Not all records are public, and you may need to pay a fee to get them.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item item-orange position-relative">
+              <div class="icon">
+                <i class="bi bi-broadcast"></i>
+              </div>
+              <a href="service-calendar.html" class="stretched-link">
+                <h3>Meeting Calendar</h3>
+              </a>
+              <p>View the schedule of City Council and other public agency meetings. You can search for historical meetings
+                 and view the calendar of upcoming meetings, even subscribe to meeting events.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item item-cyan position-relative">
+              <div class="icon">
+                <i class="bi bi-easel"></i>
+              </div>
+              <a href="service-boards.html" class="stretched-link">
+                <h3>Committees & Boards</h3>
+              </a>
+              <p>View the directory of boards, commisssions & advisory committees.  
+                You can search for a specific board and view the current term board members.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+      
+    </section><!-- /Featured Services Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section light-background">
+
+      <div class="container">
+
+        <div class="row gy-4">
+          <div class="col-lg-6 position-relative align-self-start" data-aos="fade-up" data-aos-delay="100">
+            <img src="assets/img/features-2.svg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="200">
+            <h3>City Open Data</h3>
+            <p class="fst-italic">
+              With Tyler's Open Data Platform, residents, businesses, developers, and community organizations can easily access 
+              the most up-to-date data. Our open data platform organizes it in easy-to-understand charts and graphs with context 
+              provided through narrative and visualizations, putting your open data program on the path to building strong partnerships for a better community.
+            </p>
+            <ul>
+              <li><i class="bi bi-check2-all"></i> <span>Transform your data into interactive graphs, charts, and maps</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Maximize your data's value by sharing it with others through the built-in catalog or on social media</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Embed content within existing web pages or host it on your open data homepage</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Enhance your data's reach with discovery, query, and metadata APIs</span></li>
+            </ul>
+            <p>
+              Check out the <a href="https://tylertech-erp.finance.socrata.com/#!/dashboard" target="new"> Open Data Portal</a>
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+    <!-- Features Section -->
+    <section id="features" class="features section">
+
+      <!-- Section Title -->
+      <!-- <div class="container section-title" data-aos="fade-up">
+        <h2>Features</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div> --> <!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4 align-items-center features-item">
+          <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="100">
+            <img src="assets/img/features-3.svg" class="img-fluid" alt="">
+          </div>
+          <div class="col-md-7" data-aos="fade-up" data-aos-delay="100">
+            <h3>MyCivic Mobile App</h3>
+            <p class="fst-italic">
+              The cities latest mobile app to keep up with city operations and access numerous city services. Click here for <a href="service-mobile.html">details.</a>
+            </p>
+            <ul>
+              <li><i class="bi bi-check"></i><span>Connect and build trust with your community using one app</span></li>
+              <li><i class="bi bi-check"></i><span>Send push notifications and geo-targeted messages</span></li>
+              <li><i class="bi bi-check"></i><span>Personalize the app to reflect your community's brand</span></li>
+              <li><i class="bi bi-check"></i><span>Engage with your citizens conveniently within the app</span></li>
+              <li><i class="bi bi-check"></i><span>Offer secure access to bill payment portals</span></li>
+              <li><i class="bi bi-check"></i><span>Gather community opinions and engage residents through surveys</span></li>
+            </ul>
+            <p> Get the app for <a href='https://apps.apple.com/in/app/my-civic-311/id1518277062' target="new">iOS</a> and <a href='https://play.google.com/store/apps/details?id=com.civicapps.mycivicservices&pcampaignid=web_share' target=""new">Andriod</a></p>
+          </div>
+        </div><!-- Features Item -->
+
+        <div class="row gy-4 align-items-center features-item">
+          <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+            <img src="assets/img/features-4.svg" class="img-fluid" alt="">
+          </div>
+          <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="200">
+            <h3>Service Request</h3>
+            <p class="fst-italic">
+              Make a service request for the city and keep track of you requests.
+            </p>
+            <ul>
+              <li><i class="bi bi-check"></i> <span>Incident reporting system for all non-emergency communications</span></li>
+              <li><i class="bi bi-check"></i><span>Mobile app allows users to submit requests and check incident history on the go</span></li>
+              <li><i class="bi bi-check"></i> <span>Improves responsiveness to citizen requests</span></li>
+              <li><i class="bi bi-check"></i> <span>Reduces misuse of 911 emergency call system</span></li>
+              <li><i class="bi bi-check"></i><span>Provides follow-up tracking and documentation for reporting</span></li>
+              <li><i class="bi bi-check"></i> <span>Improves responsiveness to citizen requests</span></li>
+            </ul>
+            <p>
+              Make a <a data-portico-path="/TIM/portal/portal-main" target="_blank">Service Request</a>
+            </p>
+          </div>
+        </div><!-- Features Item -->
+
+        <!-- <div class="row gy-4 align-items-center features-item">
+          <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out">
+            <img src="assets/img/features-1.svg" class="img-fluid" alt="">
+          </div>
+          <div class="col-md-7" data-aos="fade-up">
+            <h3>Sunt consequatur ad ut est nulla consectetur reiciendis animi voluptas</h3>
+            <p>Cupiditate placeat cupiditate placeat est ipsam culpa. Delectus quia minima quod. Sunt saepe odit aut quia voluptatem hic voluptas dolor doloremque.</p>
+            <ul>
+              <li><i class="bi bi-check"></i> <span>Incident reporting system for all non-emergency communications.</span></li>
+              <li><i class="bi bi-check"></i><span>Mobile app allows users to submit requests and check incident history on the go.</span></li>
+              <li><i class="bi bi-check"></i> <span>Improves responsiveness to citizen requests.</span></li>
+            </ul>
+          </div>
+        </div> --> <!-- Features Item -->
+
+      </div>
+
+    </section><!-- /Features Section -->
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
